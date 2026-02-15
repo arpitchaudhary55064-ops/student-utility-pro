@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Utility Pro - Ultimate</title>
+
+<style>
+body{
+font-family:Arial, sans-serif;
+background:#0f2027;
+background:linear-gradient(to right,#2c5364,#203a43,#0f2027);
+color:white;
+text-align:center;
+margin:0;
+padding:0;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:20px;
+}
+
+section{
+background:rgba(255,255,255,0.1);
+padding:20px;
+margin:20px 0;
+border-radius:15px;
+backdrop-filter:blur(10px);
+}
+
+input,select,button,textarea{
+padding:8px;
+margin:5px;
+border:none;
+border-radius:8px;
+}
+
+button{
+background:#00c6ff;
+color:white;
+cursor:pointer;
+}
+
+button:hover{
+background:#0072ff;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+<h1>🚀 Student Utility Pro - Ultimate</h1>
+
+<!-- Resistance -->
+<section>
+<h2>⚡ Resistance Calculator</h2>
+<input type="number" id="voltage" placeholder="Voltage (V)">
+<input type="number" id="current" placeholder="Current (I)">
+<button onclick="calcResistance()">Calculate</button>
+<p id="resistanceResult"></p>
+</section>
+
+<!-- Word Counter -->
+<section>
+<h2>📝 Word Counter</h2>
+<textarea id="textInput" rows="4" cols="40" placeholder="Type here..."></textarea>
+<p id="wordResult">Words: 0 | Characters: 0</p>
+</section>
+
+<!-- CGPA -->
+<section>
+<h2>🎓 CGPA to Percentage</h2>
+<input type="number" id="cgpa" placeholder="Enter CGPA">
+<button onclick="calcCGPA()">Convert</button>
+<p id="cgpaResult"></p>
+</section>
+
+<!-- Age Calculator -->
+<section>
+<h2>🎂 Age Calculator</h2>
+<input type="date" id="dob">
+<button onclick="calcAge()">Calculate</button>
+<p id="ageResult"></p>
+</section>
+
+<!-- Physics -->
+<section>
+<h2>🚀 Physics Calculator</h2>
+
+<select id="physicsType">
+<option value="velocity">Velocity (d/t)</option>
+<option value="acceleration">Acceleration (v/t)</option>
+<option value="force">Force (m×a)</option>
+<option value="ke">Kinetic Energy (½mv²)</option>
+<option value="density">Density (m/V)</option>
+<option value="power">Electric Power (V×I)</option>
+<option value="ohmV">Ohm’s Law (Find V)</option>
+<option value="ohmI">Ohm’s Law (Find I)</option>
+</select>
+
+<br>
+
+<input type="number" id="p1" placeholder="Value 1">
+<input type="number" id="p2" placeholder="Value 2">
+
+<button onclick="calcPhysics()">Calculate</button>
+<p id="physicsResult"></p>
+</section>
+
+<!-- Temperature -->
+<section>
+<h2>🌡 Temperature Converter</h2>
+
+<input type="number" id="tempValue" placeholder="Enter value">
+
+<select id="fromTemp">
+<option value="C">Celsius</option>
+<option value="F">Fahrenheit</option>
+<option value="K">Kelvin</option>
+<option value="R">Rankine</option>
+</select>
+
+<select id="toTemp">
+<option value="C">Celsius</option>
+<option value="F">Fahrenheit</option>
+<option value="K">Kelvin</option>
+<option value="R">Rankine</option>
+</select>
+
+<button onclick="convertTemp()">Convert</button>
+<p id="tempResult"></p>
+</section>
+
+<!-- Unit Converter -->
+<section>
+<h2>📏 Unit Converter</h2>
+
+<input type="number" id="unitValue" placeholder="Enter value">
+
+<select id="unitType">
+<option value="m_km">Meter → Kilometer</option>
+<option value="km_m">Kilometer → Meter</option>
+<option value="m_cm">Meter → Centimeter</option>
+<option value="cm_m">Centimeter → Meter</option>
+<option value="kg_g">Kg → Gram</option>
+<option value="g_kg">Gram → Kg</option>
+<option value="sec_min">Second → Minute</option>
+<option value="min_sec">Minute → Second</option>
+<option value="hr_min">Hour → Minute</option>
+<option value="min_hr">Minute → Hour</option>
+</select>
+
+<button onclick="convertUnit()">Convert</button>
+<p id="unitResult"></p>
+</section>
+
+</div>
+
+<script>
+// Resistance
+function calcResistance(){
+let V=parseFloat(document.getElementById("voltage").value);
+let I=parseFloat(document.getElementById("current").value);
+if(!V || !I){alert("Enter valid values"); return;}
+document.getElementById("resistanceResult").innerText="Resistance = "+(V/I).toFixed(2)+" Ohm";
+}
+
+// Word Counter
+document.getElementById("textInput").addEventListener("input",function(){
+let text=this.value.trim();
+let words=text?text.split(/\s+/).length:0;
+let chars=text.length;
+document.getElementById("wordResult").innerText="Words: "+words+" | Characters: "+chars;
+});
+
+// CGPA
+function calcCGPA(){
+let cg=parseFloat(document.getElementById("cgpa").value);
+if(!cg){alert("Enter CGPA"); return;}
+document.getElementById("cgpaResult").innerText="Percentage = "+(cg*9.5).toFixed(2)+"%";
+}
+
+// Age
+function calcAge(){
+let dob=new Date(document.getElementById("dob").value);
+if(!dob){alert("Select DOB"); return;}
+let today=new Date();
+let age=today.getFullYear()-dob.getFullYear();
+let m=today.getMonth()-dob.getMonth();
+if(m<0 || (m===0 && today.getDate()<dob.getDate())) age--;
+document.getElementById("ageResult").innerText="Age = "+age+" years";
+}
+
+// Physics
+function calcPhysics(){
+let type=document.getElementById("physicsType").value;
+let a=parseFloat(document.getElementById("p1").value);
+let b=parseFloat(document.getElementById("p2").value);
+let result=0;
+
+switch(type){
+case "velocity": result=a/b; break;
+case "acceleration": result=a/b; break;
+case "force": result=a*b; break;
+case "ke": result=0.5*a*b*b; break;
+case "density": result=a/b; break;
+case "power": result=a*b; break;
+case "ohmV": result=a*b; break;
+case "ohmI": result=a/b; break;
+}
+
+document.getElementById("physicsResult").innerText="Result = "+result.toFixed(2);
+}
+
+// Temperature
+function convertTemp(){
+let value=parseFloat(document.getElementById("tempValue").value);
+let from=document.getElementById("fromTemp").value;
+let to=document.getElementById("toTemp").value;
+let c;
+
+if(from==="C") c=value;
+if(from==="F") c=(value-32)*5/9;
+if(from==="K") c=value-273.15;
+if(from==="R") c=(value-491.67)*5/9;
+
+let result;
+if(to==="C") result=c;
+if(to==="F") result=(c*9/5)+32;
+if(to==="K") result=c+273.15;
+if(to==="R") result=(c+273.15)*9/5;
+
+document.getElementById("tempResult").innerText="Result = "+result.toFixed(2);
+}
+
+// Unit
+function convertUnit(){
+let value=parseFloat(document.getElementById("unitValue").value);
+let type=document.getElementById("unitType").value;
+let result;
+
+switch(type){
+case "m_km": result=value/1000; break;
+case "km_m": result=value*1000; break;
+case "m_cm": result=value*100; break;
+case "cm_m": result=value/100; break;
+case "kg_g": result=value*1000; break;
+case "g_kg": result=value/1000; break;
+case "sec_min": result=value/60; break;
+case "min_sec": result=value*60; break;
+case "hr_min": result=value*60; break;
+case "min_hr": result=value/60; break;
+}
+
+document.getElementById("unitResult").innerText="Result = "+result.toFixed(2);
+}
+</script>
+
+</body>
+</html>
