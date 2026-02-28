@@ -526,7 +526,9 @@ input, select, textarea{max-width:100%;}
 <section>
 <h2>🍅 Pomodoro Timer</h2>
 <div id="timerDisplay" class="result-box" style="font-size:3em;">25:00</div>
-
+<button onclick="startTimer()">Start</button>
+<button class="secondary" onclick="pauseTimer()">Pause</button>
+<button class="danger" onclick="resetTimer()">Reset</button>
 
 
 
@@ -670,7 +672,7 @@ input, select, textarea{max-width:100%;}
 </div>
 
 <div class="faq-item">
--question">Q: Can I create multiple<div class="faq quiz questions?</div>
+-question">Q: Can I create multiple quiz questions?<div class="faq quiz questions?</div>
 <div class="faq-answer">A: Yes! Add as many questions as you want.</div>
 </div>
 
@@ -1032,7 +1034,31 @@ input.value='';
 function clearTodos(){
 document.getElementById('todoList').innerHTML='';
 }
+
+// Quiz questions save honge
+localStorage.setItem('quizQuestions', JSON.stringify(quizQuestions));
+
+<button onclick="toggleMode()">🌙 Mode</button>
+<script>
+function toggleMode(){
+  document.body.classList.toggle('light-mode');
+}
+
+<button onclick="window.print()">🖨️ Print</button>
+
+<button onclick="window.scrollTo(0,0)">⬆️ Top</button>
+  <button onclick="navigator.clipboard.writeText(window.location.href)">📋 Copy Link</button>
+</script>
+
+
+
+  
+
+
+
+  
 </script>
 
 </body>
 </html>
+
