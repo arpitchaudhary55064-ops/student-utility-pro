@@ -6,75 +6,527 @@
 <title>Student Utility Pro - Ultimate</title>
 
 <style>
+/* ===== BASE STYLES ===== */
+*{
+box-sizing: border-box;
+}
+
 body{
-font-family:Arial, sans-serif;
-background:#0f2027;
-background:linear-gradient(to right,#2c5364,#203a43,#0f2027);
+font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
 color:white;
-text-align:center;
 margin:0;
 padding:0;
+min-height:100vh;
 }
 
 .container{
-max-width:900px;
+max-width:1000px;
 margin:auto;
 padding:20px;
 }
 
-section{
-background:rgba(255,255,255,0.1);
-padding:20px;
-margin:20px 0;
-border-radius:15px;
-backdrop-filter:blur(10px);
+/* ===== HEADER ===== */
+header{
+text-align:center;
+padding:30px 20px;
+margin-bottom:20px;
 }
 
-input,select,button,textarea{
-padding:8px;
+header h1{
+font-size:2.5em;
+margin:0;
+background: linear-gradient(90deg, #00c6ff, #0072ff, #6c5ce7);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+
+header p{
+color:#aaa;
+margin-top:10px;
+font-size:1.1em;
+}
+
+/* ===== SECTION STYLES ===== */
+section{
+background: linear-gradient(145deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.05) 100%);
+padding:25px;
+margin:25px 0;
+border-radius:20px;
+border:1px solid rgba(255,255,255,0.1);
+box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1);
+backdrop-filter: blur(10px);
+position:relative;
+overflow:hidden;
+}
+
+section::before{
+content:'';
+position:absolute;
+top:0;
+left:0;
+right:0;
+height:3px;
+background: linear-gradient(90deg, #00c6ff, #0072ff, #6c5ce7);
+border-radius:20px 20px 0 0;
+}
+
+section h2{
+color:#00c6ff;
+font-size:1.5em;
+margin:0 0 20px 0;
+padding-bottom:10px;
+border-bottom:1px solid rgba(0,198,255,0.3);
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+/* ===== INPUTS & BUTTONS ===== */
+input, select, textarea{
+padding:12px 15px;
 margin:5px;
 border:none;
-border-radius:8px;
+border-radius:10px;
+background: rgba(255,255,255,0.9);
+color:#333;
+font-size:14px;
+width:100%;
+max-width:300px;
+transition:0.3s;
+}
+
+input:focus, select:focus, textarea:focus{
+outline:none;
+box-shadow: 0 0 0 3px rgba(0,198,255,0.3);
 }
 
 button{
-background:#00c6ff;
+background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
 color:white;
 cursor:pointer;
+padding:12px 25px;
+border:none;
+border-radius:10px;
+font-size:14px;
+font-weight:bold;
+transition:0.3s;
+box-shadow: 0 4px 15px rgba(0,198,255,0.3);
 }
 
 button:hover{
-background:#0072ff;
+transform:translateY(-2px);
+box-shadow: 0 6px 20px rgba(0,198,255,0.4);
+}
+
+button.secondary{
+background: linear-gradient(135deg, #6c5ce7 0%, #a855f7 100%);
+box-shadow: 0 4px 15px rgba(108,92,231,0.3);
+}
+
+button.danger{
+background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+box-shadow: 0 4px 15px rgba(231,76,60,0.3);
+}
+
+button.success{
+background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+box-shadow: 0 4px 15px rgba(46,204,113,0.3);
+}
+
+/* ===== HOW TO USE ===== */
+.howto-item{
+background: linear-gradient(145deg, rgba(46,204,113,0.1) 0%, rgba(46,204,113,0.05) 100%);
+margin:15px 0;
+padding:20px;
+border-radius:15px;
+border:1px solid rgba(46,204,113,0.2);
+text-align:left;
+transition:0.3s;
+}
+
+.howto-item:hover{
+border-color:rgba(46,204,113,0.5);
+transform:translateX(5px);
+}
+
+.howto-item h3{
+color:#2ecc71;
+margin:0 0 15px 0;
+font-size:1.1em;
+}
+
+.howto-item ol{
+margin:0;
+padding-left:25px;
+}
+
+.howto-item li{
+margin:8px 0;
+line-height:1.6;
+color:#ddd;
+}
+
+/* ===== FAQ ===== */
+.faq-item{
+background: rgba(255,255,255,0.03);
+margin:12px 0;
+padding:18px;
+border-radius:12px;
+border:1px solid rgba(255,255,255,0.05);
+text-align:left;
+}
+
+.faq-question{
+color:#00c6ff;
+font-weight:bold;
+font-size:1.05em;
+margin-bottom:8px;
+}
+
+.faq-answer{
+padding-left:5px;
+color:#ccc;
+line-height:1.5;
+}
+
+/* ===== DISCLAIMER ===== */
+.disclaimer{
+background: linear-gradient(145deg, rgba(231,76,60,0.15) 0%, rgba(231,76,60,0.08) 100%);
+border:1px solid rgba(231,76,60,0.3);
+padding:25px;
+border-radius:15px;
+text-align:left;
+}
+
+.disclaimer h3{
+color:#e74c3c;
+margin:0 0 15px 0;
+font-size:1.2em;
+}
+
+.disclaimer p{
+margin:12px 0;
+line-height:1.7;
+color:#ddd;
+font-size:0.95em;
+}
+
+.disclaimer strong{
+color:#ff6b6b;
+}
+
+/* ===== QUIZ STYLES ===== */
+.quiz-tabs{
+display:flex;
+gap:10px;
+margin-bottom:20px;
+justify-content:center;
+flex-wrap:wrap;
+}
+
+.quiz-tabs button{
+flex:1;
+min-width:150px;
+max-width:200px;
+}
+
+#quizCreator, #quizTaker{
+display:none;
+}
+
+#questionCount{
+color:#2ecc71;
+font-weight:bold;
+margin-top:15px;
+}
+
+.quiz-option{
+display:block;
+width:100%;
+padding:15px;
+margin:10px 0;
+background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
+color:white;
+text-align:left;
+cursor:pointer;
+border:2px solid rgba(255,255,255,0.1);
+border-radius:12px;
+transition:0.3s;
+font-size:1em;
+}
+
+.quiz-option:hover{
+background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.1) 100%);
+border-color:rgba(0,198,255,0.5);
+transform:translateX(5px);
+}
+
+.quiz-option.selected{
+border-color:#00c6ff;
+background: linear-gradient(135deg, rgba(0,198,255,0.3) 0%, rgba(0,114,255,0.2) 100%);
+}
+
+.quiz-question{
+font-size:1.25em;
+margin:20px 0;
+text-align:left;
+padding:15px;
+background: rgba(0,0,0,0.2);
+border-radius:10px;
+border-left:4px solid #00c6ff;
+}
+
+.score-display{
+font-size:2em;
+color:#2ecc71;
+margin:20px 0;
+text-align:center;
+}
+
+/* ===== RESULT BOX ===== */
+.result-box{
+background: linear-gradient(135deg, rgba(0,198,255,0.2) 0%, rgba(0,114,255,0.1) 100%);
+padding:15px;
+margin:15px 0;
+border-radius:10px;
+border:1px solid rgba(0,198,255,0.3);
+font-size:1.2em;
+color:#00c6ff;
+font-weight:bold;
+min-height:50px;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+/* ===== GRID ===== */
+.calc-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
+gap:15px;
+margin:15px 0;
+}
+
+/* ===== FOOTER ===== */
+footer{
+text-align:center;
+padding:30px;
+margin-top:30px;
+border-top:1px solid rgba(255,255,255,0.1);
+color:#666;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px){
+header h1{font-size:1.8em;}
+section{padding:20px 15px;margin:15px 0;}
+.quiz-tabs{flex-direction:column;}
+.quiz-tabs button{max-width:100%;}
+.calc-grid{grid-template-columns:1fr;}
+input, select, textarea{max-width:100%;}
 }
 </style>
 </head>
 
 <body>
 <div class="container">
+<header>
 <h1>🚀 Student Utility Pro - Ultimate</h1>
+<p>All-in-one calculator & tools for students</p>
+</header>
 
-<!-- Resistance -->
+<!-- How to Use Section -->
+<section>
+<h2>📖 How to Use</h2>
+
+<div class="howto-item">
+<h3>⚡ Resistance Calculator</h3>
+<ol>
+<li>Enter Voltage (V) in the first input box</li>
+<li>Enter Current (I) in the second input box</li>
+<li>Click "Calculate" button</li>
+<li>Get your answer in Ohms</li>
+</ol>
+</div>
+
+<div class="howto-item">
+<h3>📝 Word Counter</h3>
+<ol>
+<li>Type or paste your text in the text box</li>
+<li>Word count and character count appear automatically</li>
+</ol>
+</div>
+
+<div class="howto-item">
+<h3>🎓 CGPA to Percentage</h3>
+<ol>
+<li>Enter your CGPA (0-10 scale)</li>
+<li>Click "Convert" button</li>
+<li>Get your equivalent percentage</li>
+</ol>
+</div>
+
+<div class="howto-item">
+<h3>🎂 Age Calculator</h3>
+<ol>
+<li>Select your Date of Birth from the calendar</li>
+<li>Click "Calculate" to see your age</li>
+</ol>
+</div>
+
+<div class="howto-item">
+<h3>🚀 Physics Calculator</h3>
+<ol>
+<li>Select the formula type from dropdown</li>
+<li>Enter the required values</li>
+<li>Click "Calculate" for result</li>
+</ol>
+</div>
+
+<div class="howto-item">
+<h3>🌡 Temperature Converter</h3>
+<ol>
+<li>Enter the temperature value</li>
+<li>Select "From" and "To" units</li>
+<li>Click "Convert"</li>
+</ol>
+</div>
+
+<div class="howto-item">
+<h3>📏 Unit Converter</h3>
+<ol>
+<li>Enter the value to convert</li>
+<li>Select conversion type</li>
+<li>Click "Convert"</li>
+</ol>
+</div>
+
+<div class="howto-item">
+<h3>📝 Quiz Maker</h3>
+<ol>
+<li>Click "Create Quiz" tab</li>
+<li>Enter question and 4 options</li>
+<li>Select correct answer from dropdown</li>
+<li>Click "Add Question" (repeat for more)</li>
+<li>Click "Take Quiz" to attempt</li>
+<li>Get your score!</li>
+</ol>
+</div>
+</section>
+
+<!-- FAQ Section -->
+<section>
+<h2>❓ Frequently Asked Questions (FAQ)</h2>
+
+<div class="faq-item">
+<div class="faq-question">Q: Is this website free to use?</div>
+<div class="faq-answer">A: Yes! Student Utility Pro is completely free. No hidden charges.</div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question">Q: Do I need to install anything?</div>
+<div class="faq-answer">A: No! Just open in any browser and start using.</div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question">Q: Is my data safe?</div>
+<div class="faq-answer">A: Yes! We don't collect or store any user data. All calculations happen in your browser.</div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question">Q: How is CGPA converted to Percentage?</div>
+<div class="faq-answer">A: Using formula: Percentage = CGPA × 9.5</div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question">Q: Can I create multiple quiz questions?</div>
+<div class="faq-answer">A: Yes! Add as many questions as you want.</div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question">Q: Works on mobile?</div>
+<div class="faq-answer">A: Yes! Fully responsive for all devices.</div>
+</div>
+</section>
+
+<!-- Disclaimer Section -->
+<section>
+<div class="disclaimer">
+<h3>⚠️ Disclaimer - Please Read</h3>
+<p>
+<strong>1. Educational Purpose Only:</strong> This website is for educational purposes only. Results are for general reference.<br><br>
+<strong>2. No Guarantee:</strong> We provide tools "as is" without warranty. Verify critical results.<br><br>
+<strong>3. CGPA Notice:</strong> Uses formula (CGPA × 9.5). Different universities may have different methods. Check with your institution.<br><br>
+<strong>4. Physics Calculations:</strong> Uses standard formulas. For academic submissions, verify with textbooks.<br><br>
+<strong>5. Privacy:</strong> We do not collect any user data. All calculations are local.<br><br>
+<strong>6. External Links:</strong> Not responsible for external website content.<br><br>
+<strong>7. Your Responsibility:</strong> You are responsible for how you use this information.<br><br>
+<em>By using this website, you agree to this disclaimer.</em>
+</p>
+</div>
+</section>
+
+<!-- Quiz Maker -->
+<section>
+<h2>📝 Quiz Maker</h2>
+
+<div class="quiz-tabs">
+<button class="secondary" onclick="showCreator()">Create Quiz</button>
+<button class="secondary" onclick="showTaker()">Take Quiz</button>
+</div>
+
+<div id="quizCreator">
+<h3>Create Your Quiz</h3>
+<input type="text" id="questionInput" placeholder="Enter question...">
+<input type="text" id="option1" placeholder="Option 1">
+<input type="text" id="option2" placeholder="Option 2">
+<input type="text" id="option3" placeholder="Option 3">
+<input type="text" id="option4" placeholder="Option 4">
+<select id="correctAnswer">
+<option value="0">Correct Answer: Option 1</option>
+<option value="1">Correct Answer: Option 2</option>
+<option value="2">Correct Answer: Option 3</option>
+<option value="3">Correct Answer: Option 4</option>
+</select>
+<br>
+<button onclick="addQuestion()">Add Question</button>
+<button class="danger" onclick="clearQuiz()">Clear All</button>
+<p id="questionCount">Questions: 0</p>
+</div>
+
+<div id="quizTaker">
+<div id="quizDisplay"></div>
+<button id="submitQuiz" class="success" onclick="submitQuiz()" style="display:none;">Submit Quiz</button>
+<p id="quizResult" class="score-display"></p>
+</div>
+</section>
+
+<!-- Resistance Calculator -->
 <section>
 <h2>⚡ Resistance Calculator</h2>
+<div class="calc-grid">
 <input type="number" id="voltage" placeholder="Voltage (V)">
 <input type="number" id="current" placeholder="Current (I)">
+</div>
 <button onclick="calcResistance()">Calculate</button>
-<p id="resistanceResult"></p>
+<p id="resistanceResult" class="result-box"></p>
 </section>
 
 <!-- Word Counter -->
 <section>
 <h2>📝 Word Counter</h2>
-<textarea id="textInput" rows="4" cols="40" placeholder="Type here..."></textarea>
-<p id="wordResult">Words: 0 | Characters: 0</p>
+<textarea id="textInput" rows="4" placeholder="Type here..."></textarea>
+<p id="wordResult" class="result-box">Words: 0 | Characters: 0</p>
 </section>
 
 <!-- CGPA -->
 <section>
 <h2>🎓 CGPA to Percentage</h2>
-<input type="number" id="cgpa" placeholder="Enter CGPA">
+<input type="number" id="cgpa" placeholder="Enter CGPA (0-10)" step="0.01">
 <button onclick="calcCGPA()">Convert</button>
-<p id="cgpaResult"></p>
+<p id="cgpaResult" class="result-box"></p>
 </section>
 
 <!-- Age Calculator -->
@@ -82,13 +534,12 @@ background:#0072ff;
 <h2>🎂 Age Calculator</h2>
 <input type="date" id="dob">
 <button onclick="calcAge()">Calculate</button>
-<p id="ageResult"></p>
+<p id="ageResult" class="result-box"></p>
 </section>
 
-<!-- Physics -->
+<!-- Physics Calculator -->
 <section>
 <h2>🚀 Physics Calculator</h2>
-
 <select id="physicsType">
 <option value="velocity">Velocity (d/t)</option>
 <option value="acceleration">Acceleration (v/t)</option>
@@ -96,49 +547,41 @@ background:#0072ff;
 <option value="ke">Kinetic Energy (½mv²)</option>
 <option value="density">Density (m/V)</option>
 <option value="power">Electric Power (V×I)</option>
-<option value="ohmV">Ohm’s Law (Find V)</option>
-<option value="ohmI">Ohm’s Law (Find I)</option>
+<option value="ohmV">Ohm's Law (Find V)</option>
+<option value="ohmI">Ohm's Law (Find I)</option>
 </select>
-
-<br>
-
+<div class="calc-grid">
 <input type="number" id="p1" placeholder="Value 1">
 <input type="number" id="p2" placeholder="Value 2">
-
+</div>
 <button onclick="calcPhysics()">Calculate</button>
-<p id="physicsResult"></p>
+<p id="physicsResult" class="result-box"></p>
 </section>
 
-<!-- Temperature -->
+<!-- Temperature Converter -->
 <section>
 <h2>🌡 Temperature Converter</h2>
-
 <input type="number" id="tempValue" placeholder="Enter value">
-
+<div class="calc-grid">
 <select id="fromTemp">
 <option value="C">Celsius</option>
 <option value="F">Fahrenheit</option>
 <option value="K">Kelvin</option>
-<option value="R">Rankine</option>
 </select>
-
 <select id="toTemp">
-<option value="C">Celsius</option>
 <option value="F">Fahrenheit</option>
+<option value="C">Celsius</option>
 <option value="K">Kelvin</option>
-<option value="R">Rankine</option>
 </select>
-
+</div>
 <button onclick="convertTemp()">Convert</button>
-<p id="tempResult"></p>
+<p id="tempResult" class="result-box"></p>
 </section>
 
 <!-- Unit Converter -->
 <section>
 <h2>📏 Unit Converter</h2>
-
 <input type="number" id="unitValue" placeholder="Enter value">
-
 <select id="unitType">
 <option value="m_km">Meter → Kilometer</option>
 <option value="km_m">Kilometer → Meter</option>
@@ -151,15 +594,135 @@ background:#0072ff;
 <option value="hr_min">Hour → Minute</option>
 <option value="min_hr">Minute → Hour</option>
 </select>
-
 <button onclick="convertUnit()">Convert</button>
-<p id="unitResult"></p>
+<p id="unitResult" class="result-box"></p>
 </section>
+
+<footer>
+<p>© 2024 Student Utility Pro | Made with ❤️ for Students</p>
+</footer>
 
 </div>
 
 <script>
-// Resistance
+// ===== QUIZ MAKER =====
+let quizQuestions = [];
+let userAnswers = [];
+let currentQuestionIndex = 0;
+
+function showCreator(){
+document.getElementById("quizCreator").style.display="block";
+document.getElementById("quizTaker").style.display="none";
+}
+
+function showTaker(){
+if(quizQuestions.length === 0){
+alert("No questions added! Create a quiz first.");
+return;
+}
+document.getElementById("quizCreator").style.display="none";
+document.getElementById("quizTaker").style.display="block";
+startQuiz();
+}
+
+function addQuestion(){
+let question = document.getElementById("questionInput").value.trim();
+let options = [
+document.getElementById("option1").value.trim(),
+document.getElementById("option2").value.trim(),
+document.getElementById("option3").value.trim(),
+document.getElementById("option4").value.trim()
+];
+let correct = parseInt(document.getElementById("correctAnswer").value);
+
+if(!question || options.some(o => !o)){
+alert("Please fill all fields!");
+return;
+}
+
+quizQuestions.push({question, options, correct});
+document.getElementById("questionCount").innerText = "Questions: " + quizQuestions.length;
+
+document.getElementById("questionInput").value = "";
+document.getElementById("option1").value = "";
+document.getElementById("option2").value = "";
+document.getElementById("option3").value = "";
+document.getElementById("option4").value = "";
+document.getElementById("questionInput").focus();
+}
+
+function clearQuiz(){
+if(confirm("Clear all questions?")){
+quizQuestions = [];
+document.getElementById("questionCount").innerText = "Questions: 0";
+}
+}
+
+function startQuiz(){
+currentQuestionIndex = 0;
+userAnswers = [];
+displayQuestion();
+}
+
+function displayQuestion(){
+if(currentQuestionIndex >= quizQuestions.length){
+showResult();
+return;
+}
+
+let q = quizQuestions[currentQuestionIndex];
+let html = `<div class="quiz-question"><strong>Q${currentQuestionIndex + 1}:</strong> ${q.question}</div>`;
+
+q.options.forEach((opt, i) => {
+html += `<button class="quiz-option" onclick="selectOption(${i})" id="option-${i}">${opt}</button>`;
+});
+
+document.getElementById("quizDisplay").innerHTML = html;
+document.getElementById("submitQuiz").style.display = "none";
+}
+
+function selectOption(index){
+userAnswers[currentQuestionIndex] = index;
+
+document.querySelectorAll(".quiz-option").forEach((btn, i) => {
+btn.classList.remove("selected");
+if(i === index) btn.classList.add("selected");
+});
+
+if(currentQuestionIndex === quizQuestions.length - 1){
+document.getElementById("submitQuiz").style.display = "inline-block";
+} else {
+setTimeout(() => {
+currentQuestionIndex++;
+displayQuestion();
+}, 300);
+}
+}
+
+function submitQuiz(){
+showResult();
+}
+
+function showResult(){
+let score = 0;
+quizQuestions.forEach((q, i) => {
+if(userAnswers[i] === q.correct) score++;
+});
+
+let percentage = (score / quizQuestions.length) * 100;
+let message = "";
+
+if(percentage >= 90) message = "🌟 Excellent!";
+else if(percentage >= 70) message = "👍 Good Job!";
+else if(percentage >= 50) message = "📚 Keep Studying!";
+else message = "💪 Need Improvement!";
+
+document.getElementById("quizDisplay").innerHTML = "";
+document.getElementById("quizResult").innerHTML = `Score: ${score}/${quizQuestions.length} | ${percentage.toFixed(1)}% | ${message}`;
+document.getElementById("submitQuiz").style.display = "none";
+}
+
+// ===== RESISTANCE CALCULATOR =====
 function calcResistance(){
 let V=parseFloat(document.getElementById("voltage").value);
 let I=parseFloat(document.getElementById("current").value);
@@ -167,7 +730,7 @@ if(!V || !I){alert("Enter valid values"); return;}
 document.getElementById("resistanceResult").innerText="Resistance = "+(V/I).toFixed(2)+" Ohm";
 }
 
-// Word Counter
+// ===== WORD COUNTER =====
 document.getElementById("textInput").addEventListener("input",function(){
 let text=this.value.trim();
 let words=text?text.split(/\s+/).length:0;
@@ -175,14 +738,14 @@ let chars=text.length;
 document.getElementById("wordResult").innerText="Words: "+words+" | Characters: "+chars;
 });
 
-// CGPA
+// ===== CGPA =====
 function calcCGPA(){
 let cg=parseFloat(document.getElementById("cgpa").value);
 if(!cg){alert("Enter CGPA"); return;}
 document.getElementById("cgpaResult").innerText="Percentage = "+(cg*9.5).toFixed(2)+"%";
 }
 
-// Age
+// ===== AGE =====
 function calcAge(){
 let dob=new Date(document.getElementById("dob").value);
 if(!dob){alert("Select DOB"); return;}
@@ -193,7 +756,7 @@ if(m<0 || (m===0 && today.getDate()<dob.getDate())) age--;
 document.getElementById("ageResult").innerText="Age = "+age+" years";
 }
 
-// Physics
+// ===== PHYSICS =====
 function calcPhysics(){
 let type=document.getElementById("physicsType").value;
 let a=parseFloat(document.getElementById("p1").value);
@@ -214,7 +777,7 @@ case "ohmI": result=a/b; break;
 document.getElementById("physicsResult").innerText="Result = "+result.toFixed(2);
 }
 
-// Temperature
+// ===== TEMPERATURE =====
 function convertTemp(){
 let value=parseFloat(document.getElementById("tempValue").value);
 let from=document.getElementById("fromTemp").value;
@@ -224,18 +787,16 @@ let c;
 if(from==="C") c=value;
 if(from==="F") c=(value-32)*5/9;
 if(from==="K") c=value-273.15;
-if(from==="R") c=(value-491.67)*5/9;
 
 let result;
 if(to==="C") result=c;
 if(to==="F") result=(c*9/5)+32;
 if(to==="K") result=c+273.15;
-if(to==="R") result=(c+273.15)*9/5;
 
 document.getElementById("tempResult").innerText="Result = "+result.toFixed(2);
 }
 
-// Unit
+// ===== UNIT CONVERTER =====
 function convertUnit(){
 let value=parseFloat(document.getElementById("unitValue").value);
 let type=document.getElementById("unitType").value;
@@ -259,4 +820,4 @@ document.getElementById("unitResult").innerText="Result = "+result.toFixed(2);
 </script>
 
 </body>
-</html>
+</html> 
